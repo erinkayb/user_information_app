@@ -1,0 +1,24 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "User information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erinkayb/userinformation.git"
+  },
+  "author": "Erin de Blaeij",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erinkayb/userinformation/issues"
+  },
+  "homepage": "https://github.com/erinkayb/userinformation#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}

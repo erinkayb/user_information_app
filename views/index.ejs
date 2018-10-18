@@ -1,0 +1,15 @@
+
+<% include includes/header.ejs %>
+
+<div class="jumbotron">
+  <div class="container">
+		<h1>These are your users</h1>
+	</div>
+</div>
+
+
+<ul class="list-group">
+	<% user.forEach(function(obj) { %>
+        <li class="list-group-item"><%= obj.firstname %> <%=obj.lastname %></li>
+    <% }); %>
+</ul>

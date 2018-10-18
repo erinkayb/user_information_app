@@ -1,0 +1,17 @@
+<% include includes/header.ejs %>
+
+<div class="jumbotron">
+  <div class="container">
+		<h1>Search for a user</h1>
+	</div>
+</div>
+
+
+<div class="col-lg-4">
+		<form action="/search" method="post" class="input-group">
+		  <input type='text' name="searchbar" class="form-control">
+			<span class="input-group-btn">
+		  <input type='submit' value='Submit' class="btn btn-default">
+			</span>
+		</form>
+</div>

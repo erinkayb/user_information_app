@@ -1,0 +1,13 @@
+<% include includes/header.ejs %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Your search results:</h1>
+  </div>
+</div>
+
+  <% for (var i = 0; i < users.length; i++) { %>
+    <% if(data.searchbar.toLowerCase() == users[i].firstname.toLowerCase() || data.searchbar.toLowerCase() == users[i].lastname.toLowerCase()){ %>
+      <p> <%= users[i].firstname + ' ' + users[i].lastname %> </p>
+      <p> <%= users[i].email %> </p>
+    <% } %>
+  <% } %>
