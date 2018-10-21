@@ -8,9 +8,9 @@
 <% let foundResult = false; %>
   <% for (let i = 0; i < users.length; i++) { %>
     <% if(data.searchbar.toLowerCase() == users[i].firstname.toLowerCase() || data.searchbar.toLowerCase() == users[i].lastname.toLowerCase()){ %>
-      <p class="list-group-item"> <%= `users[i].firstname users[i].lastname`%>
+      <p class="list-group-item"> <%= users[i].firstname + ' ' + users[i].lastname %>
       <br /> <%= users[i].email %> </p>
-      <% success = true; %>
+      <% foundResult = true; %>
     <% } %>
   <% } %>
 
