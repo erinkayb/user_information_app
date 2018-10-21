@@ -13,9 +13,9 @@ app.use(express.static('public'))
 
 // GET A LIST OF ALL USERS
 app.get("/", (req, res) => {
-    fs.readFile('./users.json', function(err, data) {
+    fs.readFile('./users.json', (err, data) => {
         if (err) { throw err };
-        var obj = JSON.parse(data);
+        let obj = JSON.parse(data);
         res.render("index", { user: obj });
     })
 
@@ -23,18 +23,16 @@ app.get("/", (req, res) => {
 
 
 // SEARCH FOR A USER
-app.get('/search', function (req, res){
+app.get('/search', (req, res) => {
 	res.render('search')
 })
 
-app.post('/search', function (req, res){
-  fs.readFile('./users.json', function(err, data) {
+app.post('/search', (req, res) => {
+  fs.readFile('./users.json', (err, data) => {
       if (err) { throw err };
-      var obj = JSON.parse(data);
+      let obj = JSON.parse(data);
       res.render('searchresults', { data:req.body, users:obj });
        // loop through obj and find searchbar item
-
-
   })
 })
 
@@ -43,7 +41,7 @@ app.get('/newuser', function (req, res){
 	res.render('newuser')
 })
 
-app.post('/newuser', function (req, res){
+app.post('/newuser', (req, res) => {
   let newUser = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -51,16 +49,16 @@ app.post('/newuser', function (req, res){
   }
   fs.readFile('./users.json', function(err, data) {
       if (err) { throw err };
-      var obj = JSON.parse(data);
+      let obj = JSON.parse(data);
       obj.push(newUser);
-      var stringifyData = JSON.stringify(obj);
+      let stringifyData = JSON.stringify(obj);
 
   fs.writeFile('./users.json', stringifyData, (err, data) => {
       if (err) { throw err };
       console.log('Data was written');
+    })
   })
-})
-res.redirect('/')
+  res.redirect('/')
 })
 
 
