@@ -5,9 +5,15 @@
   </div>
 </div>
 
-  <% for (var i = 0; i < users.length; i++) { %>
+<% var success = false; %>
+  <% for (let i = 0; i < users.length; i++) { %>
     <% if(data.searchbar.toLowerCase() == users[i].firstname.toLowerCase() || data.searchbar.toLowerCase() == users[i].lastname.toLowerCase()){ %>
-      <p> <%= users[i].firstname + ' ' + users[i].lastname %> </p>
-      <p> <%= users[i].email %> </p>
+      <p class="list-group-item"> <%= users[i].firstname + ' ' + users[i].lastname %> 
+      <br /> <%= users[i].email %> </p>
+      <% success = true; %>
     <% } %>
   <% } %>
+
+  <% if(!success){%>
+      <p class="list-group-item"> <%='Sorry, ' + data.searchbar + ' is not found.' %> </p>
+    <% } %>
