@@ -1,17 +1,108 @@
-<% include includes/header.ejs %>
+<head>
 
+
+    </head>
+<body>
+<% include includes/header.ejs %>
 <div class="jumbotron">
   <div class="container">
-		<h1>Search for a user</h1>
-	</div>
+    <h1>Search for a user</h1>
+  </div>
 </div>
-
-
 <div class="col-lg-4">
 		<form action="/search" method="post" class="input-group">
-		  <input type='text' name="searchbar" class="form-control">
-			<span class="input-group-btn">
+		  <input type='text' id='searchauto' name="searchbar" list='names' class="form-control">
+      <span class="input-group-btn">
 		  <input type='submit' value='Submit' class="btn btn-default">
 			</span>
 		</form>
+    <datalist id="names">
+    </datalist>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+      // let suggestion = searchresults;
+				$("#searchauto").keyup(function(){
+					var searchbar = $(this).val();
+					$('#names').empty();
+					$.post('/ajax', {searchbar:searchbar}, function(response, status){
+            for(var i = 0; i < response.length; i++){
+                $('#names').append("<option value='" + response[i].firstname + " " + response[i].lastname + "'></option>")
+						}
+				})
+			})
+			})
+
+
+
+
+          // $('#searchauto').keyup(function(){
+          //       var searchField = $(this).val();
+          // 			if(searchField === '')  {
+          // 				$('#matchedUsers').html('');
+          // 				return;
+          // 			}
+          //
+          //             var regex = new RegExp(searchField, "i");
+          //             var output = '<div class="row">';
+          //             var count = 1;
+          //             var data = '/users.json';
+          // 			  $.each(data, function(key, val){
+          // 				if ((val.firstname.search(regex) != -1) || (val.lastname.search(regex) != -1)) {
+          // 				  output += '<div class="col-md-6 well">';
+          // 				  output += '<div class="col-md-7">';
+          // 				  output += '<h5>' + val.firstname + '</h5>';
+          // 				  output += '<p>' + val.lastname + '</p>'
+          // 				  output += '</div>';
+          // 				  output += '</div>';
+          // 				  if(count%2 == 0){
+          // 					output += '<div class="row">'
+          // 				  }
+          // 				  count++;
+          // 				}
+          // 			  });
+          // 			  output += '</div>';
+          // 			  $('#matchedUsers').html(output);
+          //         });
+          //         })
+          //
+
+
+          // $(document).ready(function(){
+          //     let suggestion = [];
+          //       $("#searchauto").keyup(function(e){
+          //         console.log("e target", e.target.value)
+          //         let typedText = $(this).val()
+          //         console.log("text in object " + typedText)
+          //         $('#names').empty()
+          //         $('#matchedUsers').html('');
+          //         var expression = new RegExp(typedText, "i");
+          //         $.ajax({
+          //           url:"/ajax",
+          //           type:"GET",
+          //           data: {input:typedText},
+          //           success: function(searchresults){
+          //           $('#result').append('<li> '+ searchresults.firstname +' | <span>'+ searchresults.lastname +'</span></li>');
+          //           }
+          //         })
+          //
+          //       })
+          //     })
+
+
+// $(document).ready(function(){
+//  				$("#searchauto").keyup(function(e){
+//     $.getJson("users.json", function(data){
+//       var search = $('#searchauto').val();
+//       var regex = new RegExp(search, 'i');
+//       var output;
+//       $.each(data, function(key, val){
+//         output += $('#matchedUsers').html('<li></li>')
+//       })
+//     })
+//
+// })
+// })
+      </script>
+    </body>
