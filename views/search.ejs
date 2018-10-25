@@ -1,7 +1,7 @@
+<!DOCTYPE html>
+<html>
 <head>
-
-
-    </head>
+</head>
 <body>
 <% include includes/header.ejs %>
 <div class="jumbotron">
@@ -16,23 +16,32 @@
 		  <input type='submit' value='Submit' class="btn btn-default">
 			</span>
 		</form>
-    <datalist id="names">
-    </datalist>
+    <datalist id="names"></datalist>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
 <script>
   $(document).ready(function(){
-      // let suggestion = searchresults;
+    let callOut = 0;
+    let responseArr = [];
 				$("#searchauto").keyup(function(){
-					var searchbar = $(this).val();
-					$('#names').empty();
+					let searchbar = $(this).val();
+
+        if((Date.now() - callOut) >= 3000 ) {
 					$.post('/ajax', {searchbar:searchbar}, function(response, status){
-            for(var i = 0; i < response.length; i++){
-                $('#names').append("<option value='" + response[i].firstname + " " + response[i].lastname + "'></option>")
+            responseArr = response;
+            callOut = Date.now();
+          });
+        }
+
+        $('#names').empty();
+            for(let i = 0; i < responseArr.length; i++){
+                $('#names').append("<option value='" + responseArr[i].firstname + " " + responseArr[i].lastname + "'></option>")
 						}
-				})
-			})
-			})
+		  })
+		})
+
+
 
       </script>
     </body>
+  </html>

@@ -1,19 +1,23 @@
+<!DOCTYPE html>
+<html>
 <% include includes/header.ejs %>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+  		<h1>Create a new user</h1>
+  	</div>
+  </div>
 
-<div class="jumbotron">
-  <div class="container">
-		<h1>Create a new user</h1>
-	</div>
-</div>
 
+  <div class="col-lg-4">
+  		<form action="/newuser" method="post" class="input-group">
+  		  <input type='text' name="firstname" class="form-control" placeholder='First Name'>
+  		  <input type='text' name="lastname" class="form-control" placeholder='Last Name'>
+  		  <input type='email' name="email" class="form-control" placeholder='Your Email'>
 
-<div class="col-lg-4">
-		<form action="/newuser" method="post" class="input-group">
-		  <input type='text' name="firstname" class="form-control" placeholder='First Name'>
-		  <input type='text' name="lastname" class="form-control" placeholder='Last Name'>
-		  <input type='email' name="email" class="form-control" placeholder='Your Email'>
+  		  <input type='submit' value='Create' class="btn btn-default">
 
-		  <input type='submit' value='Create' class="btn btn-default">
-
-		</form>
-</div>
+  		</form>
+  </div>
+</body>
+</html>
