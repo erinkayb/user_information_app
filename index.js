@@ -41,7 +41,8 @@ app.post('/ajax', (req, res) => {
       var searchresults = [];
       var searchedItem = req.body.searchbar;
       for (let i = 0; i < obj.length; i++) {
-        if(obj[i].firstname.toLowerCase().indexOf(searchedItem.toLowerCase()) > -1 || obj[i].lastname.toLowerCase().indexOf(searchedItem.toLowerCase()) > -1 ){
+        var fullName = obj[i].firstname + ' ' + obj[i].lastname;
+        if(obj[i].firstname.toLowerCase().indexOf(searchedItem.toLowerCase()) > -1 || obj[i].lastname.toLowerCase().indexOf(searchedItem.toLowerCase()) > -1 || fullName.toLowerCase() === searchedItem.toLowerCase()){
            searchresults.push(obj[i]);
         }
       }

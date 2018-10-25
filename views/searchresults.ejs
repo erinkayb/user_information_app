@@ -10,7 +10,8 @@
 
 <% let foundResult = false; %>
   <% for (let i = 0; i < users.length; i++) { %>
-    <% if(data.searchbar.toLowerCase() == users[i].firstname.toLowerCase() || data.searchbar.toLowerCase() == users[i].lastname.toLowerCase()){ %>
+      <% var fullName = users[i].firstname + ' ' + users[i].lastname; %>
+    <% if(data.searchbar.toLowerCase() == fullName.toLowerCase() || data.searchbar.toLowerCase() == users[i].firstname.toLowerCase() || data.searchbar.toLowerCase() == users[i].lastname.toLowerCase()){ %>
       <p class="list-group-item"> <%= users[i].firstname + ' ' + users[i].lastname %>
       <br /> <%= users[i].email %> </p>
       <% foundResult = true; %>
